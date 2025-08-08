@@ -4,6 +4,8 @@ metadata:
  namespace: roboshop
  name: nodeselector-demo
 spec:
+ nodeSelector:
+  disktype: hdd
  containers:
  - name: nginx
    image: nginx
