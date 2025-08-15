@@ -29,7 +29,7 @@ metadata:
 spec:
  affinity:
   nodeAffinity:
-   preferredDuringSchedulingIgonredDuringExecution:
+   preferredDuringSchedulingIgnoredDuringExecution:
    - weight: 1
      preference:
       matchExpressions:
