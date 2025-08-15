@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
  name: redis-cache
 spec:
- replicas: 2
+ replicas: 3
  selector:
   matchLabels:
    app: store
@@ -34,7 +34,7 @@ kind: Deployment
 metadata:
  name: webserver
 spec:
- replicas: 2
+ replicas: 3
  selector:
   matchLabels:
    app: webstore
