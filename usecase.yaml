@@ -49,7 +49,7 @@ spec:
      - labelSelector:
         matchExpressions:
         - key: app
-          operator: NotIn
+          operator: In
           values:
           - webstore
        topologyKey: "kubernetes.io/hostname"
