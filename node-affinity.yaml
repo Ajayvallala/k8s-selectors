@@ -18,6 +18,32 @@ spec:
  - name: nginx
    image: nginx
 
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-2
+ labels:
+  purpose: node-affinity-demo
+spec:
+ affinity:
+  nodeAffinity:
+   preferedDuringSchedulingIgonredDuringExecution:
+   - weight: 1
+     preference:
+      matchExpressions:
+      - key: hardware
+        operator: In 
+        values:
+        - gpuuu
+ containers:
+ - name: nginx
+   image: nginx
+
+       
+
+
 # # apiVersion: v1
 # # kind: Pod
 # # metadata:
