@@ -37,6 +37,13 @@ spec:
         operator: In 
         values:
         - gpuuu
+   - weight: 2
+     preference:
+      matchExpressions:
+      - key: hardware
+        operator: In
+        values:
+        - gpu
  containers:
  - name: nginx
    image: nginx
