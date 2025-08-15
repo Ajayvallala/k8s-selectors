@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
  name: redis-cache
 spec:
- replicas: 3
+ replicas: 2
  selector:
   matchLabels:
    app: store
@@ -34,7 +34,7 @@ kind: Deployment
 metadata:
  name: webserver
 spec:
- replicas: 3
+ replicas: 2
  selector:
   matchLabels:
    app: webstore
@@ -49,7 +49,7 @@ spec:
      - labelSelector:
         matchExpressions:
         - key: app
-          operator: In
+          operator: NotIn
           values:
           - webstore
        topologyKey: "kubernetes.io/hostname"
