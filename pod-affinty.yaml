@@ -4,12 +4,10 @@ metadata:
  name: pod-1
  labels:
   app-name: pod-1
-  purpose: demo
 spec:
  containers:
- - name: nginx
+ - name: pod-1
    image: nginx
-
 
 ---
 
@@ -19,32 +17,71 @@ metadata:
  name: pod-2
  labels:
   app-name: pod-2
-  purpose: demo
 spec:
  affinity:
   podAffinity:
-   requiredDuringSchedulingIgnoreDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:
    - labelselectors:
-      matchExpressions:
-      - key: app-name
-        operator: In
-        values:
-        - pod-1
-   topologyKey: "kubernetes.io/hostname"
+     matchExpressions:
+     - key: app-name
+       operator: In
+       values:
+       - pod-1
+     topologyKey: topology.kubernetes.io/zone
+ containers:
+ - name: pod-2
+   image: nginx
 
-   preferedDuringSchedulingIgonreDuringExecution:
-   - weight: 1
-     podAffinityterm:
-      labelselectors:
-       matchExpressions:
-       - key: app-namee
-         operator: In
-         values:
-         - pod-1
-      topologyKey: "kubernetes.io/hostname"
+
+
+
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#  name: pod-1
+#  labels:
+#   app-name: pod-1
+#   purpose: demo
+# spec:
+#  containers:
+#  - name: nginx
+#    image: nginx
+
+
+# ---
+
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#  name: pod-2
+#  labels:
+#   app-name: pod-2
+#   purpose: demo
+# spec:
+#  affinity:
+#   podAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#    - labelselectors:
+#       matchExpressions:
+#       - key: app-name
+#         operator: In
+#         values:
+#         - pod-1
+#    topologyKey: "kubernetes.io/hostname"
+
+#    preferedDuringSchedulingIgonreDuringExecution:
+#    - weight: 1
+#      podAffinityterm:
+#       labelselectors:
+#        matchExpressions:
+#        - key: app-namee
+#          operator: In
+#          values:
+#          - pod-1
+#       topologyKey: "kubernetes.io/hostname"
         
   
- containers:
- - name: nginx
-   image: nginx
+#  containers:
+#  - name: nginx
+#    image: nginx
       
