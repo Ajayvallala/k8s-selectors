@@ -1,17 +1,36 @@
 apiVersion: v1
 kind: Pod
 metadata:
- name: node-anti-affinity-demo
+ name: pod-1
+ labels:
+  purpose: anti-affinity-demo
 spec:
  affinity:
   nodeAffinity:
-   requiredDuringSchedulingIgnoreDuringExecution:
+   requiredDuringSchedulingIgnoredDuringExecution:
     nodeSelectorTerms:
-    - matchExpressions:
-      - key: hardware
-        operator: NotIn
-        values:
-        - hdd
- containers:
- - name: nginx
-   image: nginx
+     matchExpressions:
+     - key: hardware
+       operator: NotIn
+       values:
+       - gpu
+
+
+
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#  name: node-anti-affinity-demo
+# spec:
+#  affinity:
+#   nodeAffinity:
+#    requiredDuringSchedulingIgnoreDuringExecution:
+#     nodeSelectorTerms:
+#     - matchExpressions:
+#       - key: hardware
+#         operator: NotIn
+#         values:
+#         - hdd
+#  containers:
+#  - name: nginx
+#    image: nginx
